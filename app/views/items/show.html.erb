@@ -15,5 +15,15 @@
   <%= @item.description %>
 </p>
 
+<p>
+  <strong>Photo:</strong>
+  <% if @item.photo.attached? %>
+    <% if %w(image/gif image/jpeg image/png).include?(@item.photo.content_type) %>
+      <%= image_tag @item.photo, alt: "" if @item.photo.attached? %>
+    <% end %>
+    <%= link_to "Download", @item.photo %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
