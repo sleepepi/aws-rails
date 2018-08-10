@@ -17,7 +17,7 @@ deploy:
   secret_access_key: $AWS_SECRET_KEY
   region: us-east-1
   app: aws-continuous-deployment-test-1
-  env: AwsContinuousDeploymentTest1-env
+  env: aws-rails
   bucket_name: elasticbeanstalk-us-east-1-910353042999
   on:
     repo: sleepepi/aws-rails
