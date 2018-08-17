@@ -14,7 +14,11 @@ class ItemsController < ApplicationController
 
   # GET /items/1/download
   def download
-    send_file_if_present @item.file
+    if Rails.env.production?
+      redirect_to @item.url
+    else
+      send_file_if_present @item.file
+    end
   end
 
   # GET /items/new
