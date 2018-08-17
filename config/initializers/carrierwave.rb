@@ -3,7 +3,6 @@
 case Rails.env
 when "production"
   CarrierWave.configure do |config|
-    config.storage = :fog
     config.fog_provider = "fog/aws"                        # required
     config.fog_credentials = {
       provider:              "AWS",                        # required
@@ -19,12 +18,10 @@ when "production"
   end
 when "development"
   CarrierWave.configure do |config|
-    config.storage = :file
     config.root = Rails.root.join("storage", "carrierwave")
   end
 else # when "test"
   CarrierWave.configure do |config|
-    config.storage = :file
     config.root = Rails.root.join("tmp", "storage", "carrierwave")
     config.enable_processing = false
   end
