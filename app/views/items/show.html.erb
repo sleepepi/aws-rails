@@ -25,5 +25,14 @@
   <% end %>
 </p>
 
+<p>
+  <strong>File:</strong>
+  <% if @item.file.present? %>
+    <%= @item.file.url %>
+    <%= image_tag download_item_path(@item) %>
+    <%= link_to "Download", download_item_path(@item), data: { turbolinks: false } %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

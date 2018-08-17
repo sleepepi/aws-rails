@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :download]
 
   # GET /items
   # GET /items.json
@@ -10,6 +10,11 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+  end
+
+  # GET /items/1/download
+  def download
+    send_file_if_present @item.file
   end
 
   # GET /items/new
@@ -69,6 +74,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :price, :description, :photo)
+      params.require(:item).permit(:name, :price, :description, :photo, :file)
     end
 end
