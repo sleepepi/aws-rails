@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   # GET /items/1/download
   def download
     if Rails.env.production?
-      redirect_to @item.url
+      redirect_to @item.file.url
     else
       send_file_if_present @item.file
     end
