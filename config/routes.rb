@@ -7,4 +7,6 @@ Rails.application.routes.draw do
       get :download
     end
   end
+
+  devise_for :users
 end
